@@ -658,6 +658,7 @@ try {
 
 try {
     const tobii = new Tobii()
+
 } catch (err) {
 
 }
