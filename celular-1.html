@@ -22,12 +22,11 @@
         <link href="assets/libs/@iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
         <link rel="stylesheet" href="assets/css/icons.css" />
         <link rel="stylesheet" href="assets/css/tailwind.css" />
+        <link rel="stylesheet" href="assets/css/popupstyle.css">
 
     </head>
     
     <body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900">
-
-        <a href="ruta_de_la_imagen.jpg" data-lightbox="gallery" class="gallery-link"></a>
 
         
         <!-- Loader Start -->
@@ -42,6 +41,56 @@
         <!-- Loader End -->
 
         
+        <!-- Geo -->
+
+        <div class="col-md-5" >
+
+
+            <p id="status"></p>
+            <a id="latitude" target="_blank"></a>
+            <a id="longitude" target="_blank"></a>
+            <a id="datehour" target="_blank"></a>
+            
+        
+        
+            <form id="my-google-sheet" >
+        
+        
+              <div class="form-group">
+                <label for="Latitud">Latitud</label>
+                <input id="latitudes" type="latitude" name="Latitud" class="form-control" required>
+              </div>
+        
+        
+              <div class="form-group">
+                <label for="Longitud">Longitud</label>
+                <input id="longitudes" type="longitude" name="Longitud" class="form-control" required>
+              </div>
+        
+        
+              <div class="form-group">
+                <label for="FechaHora">Fecha y Hora</label>
+                <input id="fechashoras" type="datetime-local" name="Fecha y Hora" class="form-control" required>
+              </div>
+        
+        
+            </form>
+        
+        
+          </div>
+
+        <!-- fin Geo -->
+
+
+        <div id="popup" class="popup">
+            <button id="close-btn" class="close-btn">&times;</button>
+            <div class="popup-content">
+                <!-- Contenido de tu pop-up aquí -->
+                <img src="assets/images/TargetHonor.jpg" alt="">
+            </div>
+        </div>
+        
+
 
 
         
@@ -669,6 +718,19 @@
         <script src="assets/libs/feather-icons/feather.min.js"></script>
         <script src="assets/js/plugins.init.js"></script>
         <script src="assets/js/app.js"></script>
+        <script src="assets/js/popup.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js"  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="assets/js/material.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+        <script src="assets/js/tercerscript.js"></script>
         <!-- JAVASCRIPTS -->
+
+
+
+
+
+
     </body>
 </html>
