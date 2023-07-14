@@ -3,30 +3,19 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function SendFormGoogleSheets() {
-    const status = document.querySelector("#status");
-    const latitudetxt = document.querySelector("#latitude");
-    const longitudetxt = document.querySelector("#longitude");  
+    const status = document.querySelector("#status"); 
   
     var inputlatitude = document.getElementById("latitudes");
     var inputlongitude = document.getElementById("longitudes");
     
     var now = new Date();
     
-    
-  
-    latitudetxt.textContent = "";
-    longitudetxt.textContent = "";
-    
-  
     function success(position) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       
-  
       status.textContent = "";
-      latitudetxt.textContent = `Latitude: ${latitude} °`;
-      longitudetxt.textContent = `Longitude: ${longitude} °`;
-  
+      
       inputlatitude.value = `${latitude}`;
       inputlongitude.value = `${longitude}`;
 
