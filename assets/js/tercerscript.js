@@ -11,21 +11,26 @@ function SendFormGoogleSheets() {
   const status = document.querySelector("#status"); 
   var inputlatitude = document.getElementById("latitudes");
   var inputlongitude = document.getElementById("longitudes");
-    
+  var inputpath = document.getElementById("paginas");
+  
+  
   var now = new Date();
-
+  
   let navegador = navigator.userAgent;
-        
-
-
-
-    
+  
+  
+  
+  
+  
   // Inicio de lectura de Coordenadas, Fecha y Hora
   function success(position) {
-
-    // datección de coordenadas
+    
+    // detección de coordenadas
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+
+    // detección de Path actual
+    const currentPath = window.location.pathname;
     
     // actualización de Status de lectura dependiendo de si se dio o no permiso
     status.textContent = "";
@@ -33,6 +38,9 @@ function SendFormGoogleSheets() {
     // impresión en el input de Coordenadas
     inputlatitude.value = `${latitude}`;
     inputlongitude.value = `${longitude}`;
+
+    // impresión en el input de Path
+    inputpath.value = `${currentPath}`;
 
     // impresión en el input de fecha y hora
     now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
