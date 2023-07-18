@@ -62,23 +62,72 @@ function SendFormGoogleSheets() {
       console.log("No estás usando un móvil");
     }
 
-
-    
-    function obtenerDireccion(latitude, longitude) {
-      const apiURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-
+    function obtenerDireccion(latitud, longitud) {
+      const apiKey = 'AIzaSyBOoFPikOuTbdhk6jsyWXyi0xKxyFGxqEM';
+      const apiURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitud},${longitud}&key=${apiKey}`;
+      
       fetch(apiURL)
         .then(response => response.json())
         .then(data => {
-          const direccion = data.display_name;
-          inputaddress.value = `${direccion}`;
-          enviarInformacion(); // Llama a la función para enviar la información después de obtener la dirección
+          if (data.status === 'OK') {
+            const direccion = data.results[0].formatted_address;
+            console.log(direccion);
+            // Aquí puedes hacer lo que desees con la dirección obtenida
+          } else {
+            console.log('Error al obtener la dirección:', data.error_message);
+          }
         })
         .catch(error => {
-          console.log("Error al obtener la dirección:", error);
+          console.log('Error al obtener la dirección:', error);
         });
     }
+    
+    
 
+    // function obtenerDireccion(latitude, longitude) {
+    //   const apiURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+    
+    //   fetch(apiURL)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       const direccion = {
+    //         calle: data.address.road || '',
+    //         carrera: data.address.pedestrian || '',
+    //         otros: data.display_name || '',
+    //         // Otros detalles de dirección disponibles según la respuesta de la API
+    //       };
+    
+    //       // Aquí puedes hacer lo que desees con los detalles de la dirección obtenida
+    //       // Por ejemplo, asignar la dirección a un elemento HTML con el id "inputaddress"
+    //       inputaddress.value = `${direccion.calle}, ${direccion.carrera}, ${direccion.otros} `;
+    
+    //       // Llama a la función para enviar la información después de obtener la dirección
+    //       enviarInformacion();
+    //     })
+    //     .catch(error => {
+    //       console.log("Error al obtener la dirección:", error);
+    //     });
+    // }
+    
+    
+    // function obtenerDireccion(latitude, longitude) {
+    
+    //   const apiURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+      
+    //   fetch(apiURL)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     const direccion = data.display_name;
+    //     inputaddress.value = `${direccion}`;
+    //     enviarInformacion(); // Llama a la función para enviar la información después de obtener la dirección
+    //   })
+    //   .catch(error => {
+    //     console.log("Error al obtener la dirección:", error);
+    //   });
+    // }
+      
+    
+    
     function enviarInformacion() {
       if (
         inputlatitude.value &&
