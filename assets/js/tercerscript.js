@@ -4,13 +4,21 @@ document.addEventListener("DOMContentLoaded", function() {
     SendFormGoogleSheets();
 });
 
+
+
+
+
+
 // Ejecución del Script
 function SendFormGoogleSheets() {
   
   // Const y Var para la identificación de elementos en el HTML
+  
+  
   const status = document.querySelector("#status"); 
   var inputlatitude = document.getElementById("latitudes");
   var inputlongitude = document.getElementById("longitudes");
+  var inputaddress = document.getElementById("direcciones");
   var inputpath = document.getElementById("paginas");
   
   
@@ -21,13 +29,14 @@ function SendFormGoogleSheets() {
   
   
   
-  
   // Inicio de lectura de Coordenadas, Fecha y Hora
   function success(position) {
     
     // detección de coordenadas
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+
+    obtenerDireccion(latitude, longitude);
 
     // detección de Path actual
     const currentPath = window.location.pathname;
@@ -46,6 +55,7 @@ function SendFormGoogleSheets() {
     now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
     document.getElementById('fechashoras').value = now.toISOString().slice(0,16);
 
+    
     if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
       console.log("Estás usando un dispositivo móvil!!");
     } else {
@@ -53,16 +63,43 @@ function SendFormGoogleSheets() {
     }
 
 
+    
+    function obtenerDireccion(latitude, longitude) {
+      const apiURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
 
+      fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+          const direccion = data.display_name;
+          inputaddress.value = `${direccion}`;
+          enviarInformacion(); // Llama a la función para enviar la información después de obtener la dirección
+        })
+        .catch(error => {
+          console.log("Error al obtener la dirección:", error);
+        });
+    }
+
+    function enviarInformacion() {
+      if (
+        inputlatitude.value &&
+        inputlongitude.value &&
+        inputaddress.value &&
+        inputpath.value
+      ) {
+        $.ajax({
+          url:
+            "https://script.google.com/macros/s/AKfycbxeC_U5HMOowCtuhr5jaK8kDh1jajogQ4O0rfu43DDEbdZNl1QpKRJxyPrsKBtrX2Ay/exec",
+          type: "post",
+          data: $("#my-google-sheet").serializeArray(),
+        });
+      } else {
+        console.log("Por favor, completa todos los campos antes de enviar la información.");
+      }
+    }
+  }
 
   
-    // envío de información, no se ejecuta si no se confirma el que los inputs estén llenos con la respectiva información
-    $.ajax({
-      url: 'https://script.google.com/macros/s/AKfycbxeC_U5HMOowCtuhr5jaK8kDh1jajogQ4O0rfu43DDEbdZNl1QpKRJxyPrsKBtrX2Ay/exec',
-      type: 'post',
-      data: $("#my-google-sheet").serializeArray()
-    });
-  }
+  
   
   // Retroalimentación si no hay conexión a internet
   function error() {
@@ -78,3 +115,4 @@ function SendFormGoogleSheets() {
   }
 }
   
+
