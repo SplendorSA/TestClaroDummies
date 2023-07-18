@@ -72,6 +72,8 @@ function SendFormGoogleSheets() {
           if (data.status === 'OK') {
             const direccion = data.results[0].formatted_address;
             inputaddress.value = `${direccion}`;
+            enviarInformacion(); // Llama a la función para enviar la información después de obtener la dirección
+
             // console.log(direccion);
             // Aquí puedes hacer lo que desees con la dirección obtenida
           } else {
