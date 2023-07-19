@@ -86,33 +86,7 @@ function SendFormGoogleSheets() {
     }
     
     
-
-    // function obtenerDireccion(latitude, longitude) {
-    //   const apiURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-    
-    //   fetch(apiURL)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       const direccion = {
-    //         calle: data.address.road || '',
-    //         carrera: data.address.pedestrian || '',
-    //         otros: data.display_name || '',
-    //         // Otros detalles de dirección disponibles según la respuesta de la API
-    //       };
-    
-    //       // Aquí puedes hacer lo que desees con los detalles de la dirección obtenida
-    //       // Por ejemplo, asignar la dirección a un elemento HTML con el id "inputaddress"
-    //       inputaddress.value = `${direccion.calle}, ${direccion.carrera}, ${direccion.otros} `;
-    
-    //       // Llama a la función para enviar la información después de obtener la dirección
-    //       enviarInformacion();
-    //     })
-    //     .catch(error => {
-    //       console.log("Error al obtener la dirección:", error);
-    //     });
-    // }
-    
-    
+    // SCRIPT SIN API KEY (SOLO PROPORCIONA )
     // function obtenerDireccion(latitude, longitude) {
     
     //   const apiURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
