@@ -142,6 +142,7 @@ if(document.getElementsByClassName('tiny-six-item').length > 0) {
         speed: 400,
         gutter: 0,
         responsive: {
+            
             1025: {
                 items: 6
             },
@@ -152,6 +153,10 @@ if(document.getElementsByClassName('tiny-six-item').length > 0) {
 
             767: {
                 items: 2
+            },
+
+            640: {
+                items: 3
             },
 
             320: {
