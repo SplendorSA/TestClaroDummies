@@ -129,7 +129,7 @@ if(document.getElementsByClassName('tiny-three-item').length > 0) {
 if(document.getElementsByClassName('tiny-six-item').length > 0) {
     var slider = tns({
         container: '.tiny-six-item',
-        controls: true,
+        controls: false,
         mouseDrag: true,
         loop: true,
         rewind: true,
@@ -138,9 +138,10 @@ if(document.getElementsByClassName('tiny-six-item').length > 0) {
         // autoplayTimeout: 3000,
         navPosition: "bottom",
         controlsText: ['<i class="mdi mdi-chevron-left "></i>', '<i class="mdi mdi-chevron-right"></i>'],
-        nav: false,
+        
         speed: 400,
         gutter: 0,
+
         responsive: {
             
             1025: {
@@ -152,7 +153,7 @@ if(document.getElementsByClassName('tiny-six-item').length > 0) {
             },
 
             767: {
-                items: 2
+                items: 3
             },
 
             640: {

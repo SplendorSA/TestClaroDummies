@@ -489,6 +489,19 @@ video {
   padding-right: 12px;
   padding-left: 12px;
 }
+
+.IMG-Main{
+  margin: 0 auto !important;
+  width: 260px !important;
+}
+
+.Scale-IMG-List{
+  margin: 0 auto !important;
+  width: 250px !important;
+}
+
+
+
 @media (min-width: 540px){
   .container{
     max-width: 540px;
