@@ -133,9 +133,9 @@ if(document.getElementsByClassName('tiny-six-item').length > 0) {
         mouseDrag: true,
         loop: true,
         rewind: true,
-        autoplay: true,
-        autoplayButtonOutput: false,
-        autoplayTimeout: 3000,
+        // autoplay: true,
+        // autoplayButtonOutput: false,
+        // autoplayTimeout: 3000,
         navPosition: "bottom",
         controlsText: ['<i class="mdi mdi-chevron-left "></i>', '<i class="mdi mdi-chevron-right"></i>'],
         nav: false,
@@ -147,15 +147,15 @@ if(document.getElementsByClassName('tiny-six-item').length > 0) {
             },
 
             992: {
-                items: 4
+                items: 5
             },
 
             767: {
-                items: 3
+                items: 2
             },
 
             320: {
-                items: 1
+                items: 2
             },
         },
     });
