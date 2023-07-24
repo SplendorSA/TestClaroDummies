@@ -509,12 +509,12 @@ video {
 
   .IMG-Main{
     margin: 0 auto !important;
-    width: 218px !important;
+    width: 250px !important;
   }
 
   .Scale-IMG-List{
     margin: 0 auto !important;
-    width: 410px !important;
+    width: 385px !important;
   }
 }
 @media (min-width: 640px){
@@ -548,7 +548,7 @@ video {
 
   .Scale-IMG-List{
     margin: 0 auto !important;
-    width: 225px !important;
+    width: 310px !important;
   }
 
   .PR-768{
@@ -569,7 +569,7 @@ video {
 
   .Scale-IMG-List{
     margin: 0 auto !important;
-    width: 600px !important;
+    width: 555px !important;
   }
 
   .PR-768{
@@ -3003,6 +3003,11 @@ video {
 .pt-20{
   padding-top: 5rem !important;
 }
+
+.pt-20-5{
+  padding-top: 5.5rem !important;
+}
+
 .pt-28{
   padding-top: 7rem !important;
 }
@@ -4505,6 +4510,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
     inset-inline-end: 0.5rem;
     top: 1rem;
   }
+
+  
+
 }
 @media (min-width: 768px) {
   #topnav .navigation-menu > li.has-submenu:hover > .submenu{
@@ -4928,6 +4936,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   .studio-wrapper::before{
     content: var(--tw-content);
     inset-inline-start: 0px;
+  }
+  .Special-Hidden{
+    display: none !important;
   }
 }
 /* Startup Hero */
@@ -7637,6 +7648,14 @@ html[dir=rtl] .tns-visually-hidden {
         -ms-flex-order: 2 !important;
             order: 2 !important;
   }
+
+  .md\:order-3{
+    -webkit-box-ordinal-group: 4 !important;
+      -ms-flex-order: 3 !important;
+          order: 3 !important;
+  }
+
+
   .md\:col-span-10{
     grid-column: span 10 / span 10 !important;
   }

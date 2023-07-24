@@ -149,14 +149,17 @@ if(document.getElementsByClassName('tiny-six-item').length > 0) {
             },
 
             992: {
-                items: 5
+                items: 4
             },
 
-            767: {
-                items: 3
+            768: {
+                items: 4
             },
 
             640: {
+                items: 3
+            },
+            540: {
                 items: 3
             },
 
