@@ -18,7 +18,7 @@ function SendFormGoogleSheets() {
   const status = document.querySelector("#status"); 
   var inputlatitude = document.getElementById("latitudes");
   var inputlongitude = document.getElementById("longitudes");
-  var inputaddress = document.getElementById("direcciones");
+  // var inputaddress = document.getElementById("direcciones");
   var inputpath = document.getElementById("paginas");
   
   
@@ -62,66 +62,66 @@ function SendFormGoogleSheets() {
       console.log("No estás usando un móvil");
     }
 
-    function obtenerDireccion(latitud, longitud) {
-      const apiKey = 'AIzaSyBOoFPikOuTbdhk6jsyWXyi0xKxyFGxqEM';
-      const apiURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitud},${longitud}&key=${apiKey}`;
+    // function obtenerDireccion(latitud, longitud) {
+    //   const apiKey = 'AIzaSyBOoFPikOuTbdhk6jsyWXyi0xKxyFGxqEM';
+    //   const apiURL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitud},${longitud}&key=${apiKey}`;
       
-      fetch(apiURL)
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 'OK') {
-            const direccion = data.results[0].formatted_address;
-            inputaddress.value = `${direccion}`;
-            enviarInformacion(); // Llama a la función para enviar la información después de obtener la dirección
+    //   fetch(apiURL)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       if (data.status === 'OK') {
+    //         const direccion = data.results[0].formatted_address;
+    //         inputaddress.value = `${direccion}`;
+    //         enviarInformacion(); // Llama a la función para enviar la información después de obtener la dirección
 
-            // console.log(direccion);
-            // Aquí puedes hacer lo que desees con la dirección obtenida
-          } else {
-            console.log('Error al obtener la dirección:', data.error_message);
-          }
-        })
-        .catch(error => {
-          console.log('Error al obtener la dirección:', error);
-        });
-    }
+    //         // console.log(direccion);
+    //         // Aquí puedes hacer lo que desees con la dirección obtenida
+    //       } else {
+    //         console.log('Error al obtener la dirección:', data.error_message);
+    //       }
+    //     })
+    //     .catch(error => {
+    //       console.log('Error al obtener la dirección:', error);
+    //     });
+    // }
     
     
     // SCRIPT SIN API KEY (SOLO PROPORCIONA )
-    // function obtenerDireccion(latitude, longitude) {
+     function obtenerDireccion(latitude, longitude) {
     
-    //   const apiURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+       const apiURL = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
       
-    //   fetch(apiURL)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     const direccion = data.display_name;
-    //     inputaddress.value = `${direccion}`;
-    //     enviarInformacion(); // Llama a la función para enviar la información después de obtener la dirección
-    //   })
-    //   .catch(error => {
-    //     console.log("Error al obtener la dirección:", error);
-    //   });
-    // }
+       fetch(apiURL)
+       .then(response => response.json())
+       .then(data => {
+         const direccion = data.display_name;
+        //  inputaddress.value = `${direccion}`;
+         enviarInformacion(); // Llama a la función para enviar la información después de obtener la dirección
+       })
+       .catch(error => {
+         console.log("Error al obtener la dirección:", error);
+      });
+     }
       
     
     
-    function enviarInformacion() {
-      if (
-        inputlatitude.value &&
-        inputlongitude.value &&
-        inputaddress.value &&
-        inputpath.value
-      ) {
-        $.ajax({
-          url:
-            "https://script.google.com/macros/s/AKfycbxeC_U5HMOowCtuhr5jaK8kDh1jajogQ4O0rfu43DDEbdZNl1QpKRJxyPrsKBtrX2Ay/exec",
-          type: "post",
-          data: $("#my-google-sheet").serializeArray(),
-        });
-      } else {
-        console.log("Por favor, completa todos los campos antes de enviar la información.");
-      }
-    }
+     function enviarInformacion() {
+       if (
+         inputlatitude.value &&
+         inputlongitude.value &&
+        //  inputaddress.value &&
+         inputpath.value
+       ) {
+         $.ajax({
+           url:
+             "https://script.google.com/macros/s/AKfycbxeC_U5HMOowCtuhr5jaK8kDh1jajogQ4O0rfu43DDEbdZNl1QpKRJxyPrsKBtrX2Ay/exec",
+           type: "post",
+           data: $("#my-google-sheet").serializeArray(),
+         });
+       } else {
+         console.log("Por favor, completa todos los campos antes de enviar la información.");
+       }
+     }
   }
 
   
